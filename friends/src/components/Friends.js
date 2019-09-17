@@ -6,7 +6,7 @@ const Friends = () => {
     axiosWithAuth()
         .get('/friends')
         .then(response => {
-            console.log(response)
+            console.log(response.data)
         })
         .catch(error => {
             console.log(error)
@@ -14,7 +14,10 @@ const Friends = () => {
 
     return (
         <div>
-            <h1>FRIENDS</h1>
+            <h1>Friends</h1>
+            {/* {friends.map(friend => {
+                return <p>{friend.name}</p>
+            })} */}
         </div>
     )
 }

@@ -11,12 +11,12 @@ const LoginForm = props => {
     }
 
     const SubmitForm = e => {
-        e.preventdefault()
+        e.preventDefault()
         axiosWithAuth()
-            .post('/login', setForm)
+            .post('/login', form)
             .then(response => {
                 console.log(response)
-                localStorage.getItem('token', response.data.payload);
+                localStorage.setItem('token', response.data.payload);
 
                 props.history.push('/protected')
             })
@@ -40,7 +40,7 @@ const LoginForm = props => {
             value={form.password}
             onChange={ChangeHandler}
             />
-            <button>Log In!</button>
+            <button type="submit">Log In!</button>
         </form>
     )
 }

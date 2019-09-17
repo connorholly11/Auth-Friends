@@ -14,11 +14,11 @@ function App() {
         <Link to='/login'> Login </Link>
         <Link to='/protected'> Private </Link>
 
-        <Switch>
+        
           <PrivateRoute exact path='/protected' component={Friends} />
           <Route path='/login' component={LoginForm} />
-          <Route component={LoginForm} />
-        </Switch>
+          {/* <Route component={LoginForm} /> */}
+        
     </div>
   </Router>
   );
