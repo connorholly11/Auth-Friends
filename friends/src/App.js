@@ -12,10 +12,10 @@ function App() {
     <div className="App">
       
         <NavLink to='/login'> Login </NavLink>
-        {/* <NavLink to='/protected'> Private </NavLink> */}
+        <NavLink to='/protected'> Private </NavLink>
 
         <Route path='/login' component={LoginForm} />
-        {/* <PrivateRoute path='/protected' component={Friends} /> */}
+        <PrivateRoute path='/protected' component={Friends} />
       
     </div>
   </Router>
