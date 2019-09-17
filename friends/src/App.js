@@ -11,12 +11,14 @@ function App() {
   <Router>
     <div className="App">
       
-        <NavLink to='/login'> Login </NavLink>
-        <NavLink to='/protected'> Private </NavLink>
+        <Link to='/login'> Login </Link>
+        <Link to='/protected'> Private </Link>
 
-        <Route path='/login' component={LoginForm} />
-        <PrivateRoute path='/protected' component={Friends} />
-      
+        <Switch>
+          <PrivateRoute exact path='/protected' component={Friends} />
+          <Route path='/login' component={LoginForm} />
+          <Route component={LoginForm} />
+        </Switch>
     </div>
   </Router>
   );

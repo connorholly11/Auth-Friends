@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
+import {axiosWithAuth} from '../utils/axiosWithAuth';
 
-const LoginForm = () => {
+const LoginForm = props => {
     const [form, setForm] = useState({username: '', password: '' })
 
 
@@ -9,13 +10,23 @@ const LoginForm = () => {
     
     }
 
-    // const SubmitForm = e => {
-    //     e.preventdefault()
+    const SubmitForm = e => {
+        e.preventdefault()
+        axiosWithAuth()
+            .post('/login', setForm)
+            .then(response => {
+                console.log(response)
+                localStorage.getItem('token', response.data.payload);
 
-    // }
+                props.history.push('/protected')
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
 
     return(
-        <form>
+        <form onSubmit={SubmitForm}>
             <input 
             name="username"
             placeholder="username"
@@ -29,7 +40,7 @@ const LoginForm = () => {
             value={form.password}
             onChange={ChangeHandler}
             />
-            <button type='submit'>Log In!</button>
+            <button>Log In!</button>
         </form>
     )
 }
