@@ -1,16 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {axiosWithAuth} from '../utils/axiosWithAuth'
 
 const Friends = () => {
 
-    axiosWithAuth()
-        .get('/friends')
-        .then(response => {
-            console.log(response.data)
-        })
-        .catch(error => {
-            console.log(error)
-        })
+    useEffect(() => {
+         axiosWithAuth()
+            .get('/friends')
+            .then(response => {
+                console.log(response.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    })
+   
 
     return (
         <div>
