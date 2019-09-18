@@ -6,19 +6,25 @@ import FriendsForm from './FriendsForm';
 
 const Friends = ({getFriends, friends, isFetching, error}) => {
 
-    const [addfriend, setAddFriend] = useState([])
+    // const [addfriend, setAddFriend] = useState([])
+
+    // useEffect(() => {
+    //      axiosWithAuth()
+    //         .get('/friends')
+    //         .then(response => {
+    //             console.log(response.data)
+    //             setAddFriend(response.data)
+    //         })
+    //         .catch(error => {
+    //             console.log(error)
+    //         })
+    // }, [])
 
     useEffect(() => {
-         axiosWithAuth()
-            .get('/friends')
-            .then(response => {
-                console.log(response.data)
-                setAddFriend(response.data)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }, [])
+
+        getFriends()
+    
+    }, ['/friends'])
 
     if (isFetching){
         return <h1>FETCHING DATA</h1>
@@ -28,7 +34,8 @@ const Friends = ({getFriends, friends, isFetching, error}) => {
     return (
         <div>
             <h1>Friends</h1>
-            {addfriend.map(friend => {
+            {friends.map(friend => {
+                console.log('friend',friend)
                 return(
                     <div key={friend.id}>
                         <p>Name: {friend.name}, Age: {friend.age}</p>

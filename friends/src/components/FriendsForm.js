@@ -13,7 +13,7 @@ const FriendsForm = props => {
         axiosWithAuth()
             .post('/friends',  friendform)
             .then(response => {
-                console.log(response)
+                console.log('/friends',response)
             })
             // const newFriend = {
             //     ...friendform,
