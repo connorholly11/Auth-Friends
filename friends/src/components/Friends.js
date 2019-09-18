@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react';
 import {axiosWithAuth} from '../utils/axiosWithAuth'
+import {connect} from 'react-redux'
+import {getFriends} from '../actions/FriendsList';
 
-const Friends = () => {
+const Friends = ({getFriends, friends, isFetching, error}) => {
 
     useEffect(() => {
          axiosWithAuth()
@@ -13,16 +15,30 @@ const Friends = () => {
                 console.log(error)
             })
     })
+
+    if (isFetching = true){
+        return <h1>FETCHING DATA</h1>
+    }
    
 
     return (
         <div>
             <h1>Friends</h1>
-            {/* {friends.map(friend => {
+            {friends.map(friend => {
                 return <p>{friend.name}</p>
-            })} */}
+            })}
         </div>
     )
 }
 
-export default Friends
+const mapStateToProps = state => {
+    return{
+        friends: state.friends,
+        isFetching: state.isFetching,
+        error: state.error
+    }
+}
+
+export default connect(mapStateToProps, 
+    {getFriends})
+    (Friends)

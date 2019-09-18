@@ -1,6 +1,6 @@
 import {FETCHING_DATA_START, FETCHING_DATA_SUCCESS, FETCHING_DATA_FAILURE} from '../actions/FriendsList'
 
-const initialState = {
+export const initialState = {
     friends: [
     {
       id: 1,
@@ -41,8 +41,9 @@ const initialState = {
 
     
   ],
-    isFetching= false,
-    error= ''
+
+    isFetching: false,
+    error: ''
 }
 
   export const FriendsReducer = (state = initialState, action) => {
@@ -50,21 +51,21 @@ const initialState = {
              case FETCHING_DATA_START:
                 return{
                     ...state,
-                    isFetching = true,
-                    error = ''
+                    isFetching: true,
+                    error: ''
                 }
             case FETCHING_DATA_SUCCESS:
                 return{
                     ...state,
-                    friends= action.payload,
-                    isFetching = false,
-                    error = ''
+                    friends: action.payload,
+                    isFetching:  false,
+                    error: ''
                 }
             case FETCHING_DATA_FAILURE:
                 return{
                     ...state,
-                    isFetching = false,
-                    error = action.payload
+                    isFetching: false,
+                    error: action.payload
                 }
             default:
                 return state
