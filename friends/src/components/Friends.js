@@ -16,7 +16,7 @@ const Friends = ({getFriends, friends, isFetching, error}) => {
             })
     })
 
-    if (isFetching = true){
+    if (isFetching){
         return <h1>FETCHING DATA</h1>
     }
    
@@ -25,7 +25,11 @@ const Friends = ({getFriends, friends, isFetching, error}) => {
         <div>
             <h1>Friends</h1>
             {friends.map(friend => {
-                return <p>{friend.name}</p>
+                return(
+                    <div>
+                        <p>Name: {friend.name}, Age: {friend.age}</p>
+                    </div>
+                ) 
             })}
         </div>
     )
