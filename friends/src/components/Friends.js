@@ -6,25 +6,11 @@ import FriendsForm from './FriendsForm';
 
 const Friends = ({getFriends, friends, isFetching, error}) => {
 
-    // const [addfriend, setAddFriend] = useState([])
-
-    // useEffect(() => {
-    //      axiosWithAuth()
-    //         .get('/friends')
-    //         .then(response => {
-    //             console.log(response.data)
-    //             setAddFriend(response.data)
-    //         })
-    //         .catch(error => {
-    //             console.log(error)
-    //         })
-    // }, [])
-
     useEffect(() => {
 
         getFriends()
     
-    }, ['/friends'])
+    }, [getFriends])
 
     if (isFetching){
         return <h1>FETCHING DATA</h1>

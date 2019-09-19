@@ -1,4 +1,5 @@
 import {FETCHING_DATA_START, FETCHING_DATA_SUCCESS, FETCHING_DATA_FAILURE} from '../actions/FriendsList'
+import {POSTING_FRIEND_FAILURE, POSTING_FRIEND_SUCCESS, POSTING_FRIEND_START} from '../actions/FriendsList'
 
 export const initialState = {
     friends: [
@@ -41,7 +42,6 @@ export const initialState = {
 
     
   ],
-
     isFetching: false,
     error: ''
 }
@@ -67,6 +67,22 @@ export const initialState = {
                     isFetching: false,
                     error: action.payload
                 }
+
+            case POSTING_FRIEND_START:
+                return{
+                    ...state,
+                }
+            case POSTING_FRIEND_SUCCESS:
+                return{
+                    ...state,
+                    friends: [...state, action.payload]
+                }
+            case POSTING_FRIEND_FAILURE:
+                return{
+                    ...state,
+                    error: action.payload
+                }
+
             default:
                 return state
       } 
